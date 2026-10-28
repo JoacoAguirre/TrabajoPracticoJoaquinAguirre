@@ -1,0 +1,124 @@
+/* ==========================================================
+   Paleta · Login (Qt Designer)
+   Fondo principal ........ #0F172A     Texto principal ....... #E2E8F0
+   Superficie / tarjetas .. #1E293B     Texto secundario ...... #64748B
+   Bordes / secundarios ... #334155     Botón primario ........ #3B82F6
+   Hover ................. #2563EB      Pressed ............... #1D4ED8
+   Éxito ................. #10B981      Error ................. #EF4444
+   Advertencia ........... #F59E0B
+   ========================================================== */
+
+/* ---------- fondo de la aplicación ---------- */
+QStackedWidget,
+QWidget#pantalla_login,
+QWidget#pantalla_registro {
+    background-color: #0F172A;
+}
+
+/* ---------- tarjeta ----------
+   Se usa el id: QLabel hereda de QFrame y un selector "QFrame" le pondría
+   borde a todas las etiquetas. */
+QFrame#frame_tarjeta {
+    background-color: #1E293B;
+    border: 1px solid #334155;
+    border-radius: 16px;
+}
+
+/* ---------- textos ---------- */
+QLabel {
+    background: transparent;
+    color: #E2E8F0;
+    font-size: 13px;
+}
+QLabel#label_titulo {
+    font-size: 26px;
+    font-weight: 700;
+    padding-bottom: 2px;
+}
+QLabel#label_subtitulo {
+    color: #64748B;
+    padding-bottom: 10px;
+}
+
+/* ---------- campos ---------- */
+QLineEdit {
+    background-color: #334155;
+    color: #E2E8F0;
+    border: 1px solid #334155;
+    border-radius: 8px;
+    padding: 9px 12px;
+    font-size: 13px;
+    placeholder-text-color: #64748B;
+    selection-background-color: #3B82F6;
+    selection-color: #E2E8F0;
+}
+QLineEdit:hover { border: 1px solid #64748B; }
+QLineEdit:focus { border: 2px solid #3B82F6; padding: 8px 11px; }
+
+/* ---------- casilla «mostrar contraseña» ---------- */
+QCheckBox {
+    background: transparent;
+    color: #E2E8F0;
+    spacing: 8px;
+    font-size: 13px;
+}
+QCheckBox::indicator {
+    width: 18px;
+    height: 18px;
+    border: 1px solid #64748B;
+    border-radius: 4px;
+    background-color: #334155;
+}
+QCheckBox::indicator:hover   { border: 1px solid #3B82F6; }
+QCheckBox::indicator:checked {
+    background-color: #3B82F6;
+    border: 1px solid #3B82F6;
+    image: url({{RECURSOS}}/check.svg);
+}
+
+/* ---------- botón primario ---------- */
+QPushButton#btn_login,
+QPushButton#btn_registrar {
+    background-color: #3B82F6;
+    color: #E2E8F0;
+    border: none;
+    border-radius: 8px;
+    padding: 11px 16px;
+    font-size: 14px;
+    font-weight: 600;
+}
+QPushButton#btn_login:hover,
+QPushButton#btn_registrar:hover    { background-color: #2563EB; }
+QPushButton#btn_login:pressed,
+QPushButton#btn_registrar:pressed  { background-color: #1D4ED8; }
+QPushButton#btn_login:disabled,
+QPushButton#btn_registrar:disabled { background-color: #334155; color: #64748B; }
+
+/* ---------- botón secundario (outline) ---------- */
+QPushButton#btn_ir_registro,
+QPushButton#btn_volver_login {
+    background-color: transparent;
+    color: #E2E8F0;
+    border: 1px solid #64748B;
+    border-radius: 8px;
+    padding: 10px 16px;
+    font-size: 13px;
+}
+QPushButton#btn_ir_registro:hover,
+QPushButton#btn_volver_login:hover   { background-color: #334155; border: 1px solid #3B82F6; }
+QPushButton#btn_ir_registro:pressed,
+QPushButton#btn_volver_login:pressed { background-color: #0F172A; }
+
+/* ---------- foco con teclado en botones ---------- */
+QPushButton:focus { border: 2px solid #3B82F6; }
+QPushButton#btn_login:focus,
+QPushButton#btn_registrar:focus { border: 2px solid #E2E8F0; }
+
+/* ---------- mensajes: Python dice el tipo, el QSS decide el color ---------- */
+QLabel#label_mensaje {
+    color: #64748B;
+    font-weight: 600;
+}
+QLabel#label_mensaje[tipo="error"]       { color: #EF4444; }
+QLabel#label_mensaje[tipo="exito"]       { color: #10B981; }
+QLabel#label_mensaje[tipo="advertencia"] { color: #F59E0B; }
